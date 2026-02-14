@@ -13,10 +13,12 @@
 - Member 2: Asiya S - LBSITW
 
 ### Hosted Project Link
-[mention your project hosted link here]
+https://asiya-006.github.io/rigel
 
 ### Project Description
-[2-3 lines about what your project does]
+Diet Analyser is a web-based application that helps users make safer food choices based on their blood health report. The system allows users to enter their blood test values, scan product ingredient labels using OCR, and receive an AI-powered safety analysis.
+
+The application combines Optical Character Recognition (OCR), Local Storage, and Generative AI to provide personalized health recommendations.
 
 ### The Problem statement
 Most individuals find it difficulty to understand the ingredients listed on a food package causing them concern about possible health issues or allergic reactions .
@@ -33,7 +35,7 @@ A website is created where users can fill out a form or upload an image of there
 **For Software:**
 - Languages used: HTML,Javascript
 - Frameworks used: 
-- Libraries used: Tesseract
+- Libraries used: Tesseract,Google Gemini 2.5 Flash API
 - Tools used: V S code,Git
 
 
@@ -77,15 +79,17 @@ List the key features of your project:
 ### For Software:
 
 #### Screenshots (Add at least 3)
+<img width="1920" height="1080" alt="Screenshot (23)" src="https://github.com/user-attachments/assets/dad53a6d-499a-436d-99ec-520ee2229093" />
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+Homepage of the wesite
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1920" height="1080" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/0404f8a3-2433-4821-bce2-057c0f51eeb9" />
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+Request to fill or upload the blood report
+
+<img width="1920" height="1080" alt="Screenshot (25)" src="https://github.com/user-attachments/assets/e7418c4b-cfe8-490e-8d15-f42256438801" />
+
+Request to analyse the incredients and 
 
 #### Diagrams
 
@@ -414,3 +418,4 @@ This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LI
 
 
 Made with ❤️ at TinkerHub
+
