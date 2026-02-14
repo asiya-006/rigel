@@ -2,15 +2,15 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+#  🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: Polaris
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: Aleena RY - LBSITW
+- Member 2: Asiya S - LBSITW
 
 ### Hosted Project Link
 [mention your project hosted link here]
@@ -19,10 +19,10 @@
 [2-3 lines about what your project does]
 
 ### The Problem statement
-[What problem are you solving?]
+Most individuals find it difficulty to understand the ingredients listed on a food package causing them concern about possible health issues or allergic reactions .
 
 ### The Solution
-[How are you solving it?]
+A website is created where users can fill out a form or upload an image of there recent blood test report.Additionally, users can upload an image of the ingredients printed on the food package.OCR is used to extract text from the images and pass it to a LLM .Within a short time span with the help of AI both sets of data will be analysed and report will be generated on whether it will affect or benefit the user. 
 
 ---
 
@@ -31,25 +31,20 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: HTML,Javascript
+- Frameworks used: 
+- Libraries used: Tesseract
+- Tools used: V S code,Git
 
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
 
----
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Data can be filled out at the same time uploaded
+- Report presented are structured and concise,ensuring clarity for a board audience
+
+
 
 ---
 
@@ -416,5 +411,6 @@ This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LI
 - GPL v3 (Copyleft, requires derivative works to be open source)
 
 ---
+
 
 Made with ❤️ at TinkerHub
