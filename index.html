@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Ingredient Helper</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #8b2fc9 50%,
+          #1db9c3 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Animated background overlay */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.3) 0%,
+          rgba(139, 47, 201, 0.3) 50%,
+          rgba(29, 185, 195, 0.3) 100%
+        );
+        animation: gradientShift 15s ease infinite;
+        z-index: 0;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      .hero-section {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        width: 100%;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .left-content {
+        flex: 1;
+        min-width: 300px;
+        color: white;
+      }
+
+      .left-content h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+        letter-spacing: -2px;
+      }
+
+      .left-content p {
+        font-size: 1.2rem;
+        opacity: 0.95;
+        margin-bottom: 30px;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+        font-weight: 600;
+      }
+
+      .cta-button:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(0, 123, 255, 0.6);
+      }
+
+      /* Glassmorphism container */
+      .container {
+        flex: 1;
+        min-width: 400px;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      .container.active {
+        display: block;
+        animation: slideIn 0.5s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container h2 {
+        text-align: center;
+        color: white;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-button {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        color: white;
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-top: 8px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      input:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+
+      /* File input styling */
+      input[type="file"] {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      input[type="file"]::file-selector-button {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      button[type="submit"],
+      button[type="button"] {
+        margin-top: 20px;
+        width: 100%;
+        padding: 14px;
+        background: rgba(0, 123, 255, 0.9);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      }
+
+      button[type="submit"]:hover,
+      button[type="button"]:hover {
+        background: rgba(0, 86, 179, 0.9);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+      }
+
+      .scan-btn {
+        background: rgba(139, 47, 201, 0.9) !important;
+      }
+
+      .scan-btn:hover {
+        background: rgba(100, 30, 150, 0.9) !important;
+      }
+
+      /* Responsive design */
+      @media (max-width: 900px) {
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .left-content h1 {
+          font-size: 3rem;
+        }
+
+        .container {
+          min-width: 100%;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .left-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .container {
+          padding: 25px;
+        }
+      }
+
+      /* Success message */
+      .success-message {
+        background: rgba(76, 175, 80, 0.2);
+        border: 1px solid rgba(76, 175, 80, 0.5);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        text-align: center;
+        display: none;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-section">
+      <div class="left-content" id="heroContent">
+        <h1>Health is Wealth</h1>
+        <p>
+          Track your blood report metrics and maintain optimal health with our
+          smart ingredient helper.
+        </p>
+        <button class="cta-button" onclick="showForm()">
+          Enter Your Report
+        </button>
+        <button onclick="window.location.href = 'ingredients.html'" class="cta-button">
+          Go to Ingredient Scanner
+        </button>
+      </div>
+
+      <div class="container" id="formContainer">
+        <button class="back-button" onclick="hideForm()">← Back</button>
+        <h2>Enter Your Blood Report</h2>
+        <form id="healthForm">
+          <label>Hemoglobin Level (g/dL):</label>
+          <input
+            type="number"
+            step="0.1"
+            name="hemoglobin"
+            placeholder="e.g., 13.5"
+            required
+          />
+
+          <label>Platelets Count:</label>
+          <input
+            type="number"
+            name="platelets"
+            placeholder="e.g., 250000"
+            required
+          />
+
+          <label>Cholesterol Level (mg/dL):</label>
+          <input
+            type="number"
+            name="cholesterol"
+            placeholder="e.g., 180"
+            required
+          />
+
+          <label>Blood Sugar Level (mg/dL):</label>
+          <input type="number" name="sugar" placeholder="e.g., 95" required />
+
+          <label>Blood Pressure (e.g., 120/80):</label>
+          <input type="text" name="bp" placeholder="120/80" required />
+
+          <label>Upload Blood Report Image (Optional):</label>
+          <input type="file" id="reportImage" accept="image/*" />
+          <button type="button" id="scanBtn" class="scan-btn">
+            📸 Scan Image
+          </button>
+
+          <button type="submit">💾 Submit Report</button>
+        </form>
+
+        <div class="success-message" id="successMsg">
+          ✅ Report saved successfully!
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script>
+      const form = document.getElementById("healthForm");
+      const formContainer = document.getElementById("formContainer");
+      const heroContent = document.getElementById("heroContent");
+      const successMsg = document.getElementById("successMsg");
+
+      function showForm() {
+        formContainer.classList.add("active");
+        heroContent.style.display = "none";
+      }
+
+      function hideForm() {
+        formContainer.classList.remove("active");
+        heroContent.style.display = "block";
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        const report = {
+          hemoglobin: formData.get("hemoglobin"),
+          platelets: formData.get("platelets"),
+          cholesterol: formData.get("cholesterol"),
+          sugar: formData.get("sugar"),
+          bp: formData.get("bp"),
+          timestamp: new Date().toISOString(),
+        };
+
+        // Get existing reports or empty array
+        let reports = JSON.parse(localStorage.getItem("bloodReports")) || [];
+
+        // Add new report
+        reports.push(report);
+
+        // Save back to localStorage
+        localStorage.setItem("bloodReports", JSON.stringify(reports));
+
+        // Show success message
+        successMsg.style.display = "block";
+
+        setTimeout(() => {
+          successMsg.style.display = "none";
+          form.reset();
+        }, 3000);
+      });
+
+      const scanBtn = document.getElementById("scanBtn");
+      const imageInput = document.getElementById("reportImage");
+
+      scanBtn.addEventListener("click", async () => {
+        const file = imageInput.files[0];
+
+        if (!file) {
+          alert("⚠️ Please upload an image first.");
+          return;
+        }
+
+        // Disable button and show loading state
+        scanBtn.disabled = true;
+        scanBtn.textContent = "🔄 Scanning...";
+
+        try {
+          const {
+            data: { text },
+          } = await Tesseract.recognize(file, "eng");
+
+          console.log("Scanned text:", text);
+
+          // Extract values with regex
+          const hemoMatch = text.match(/Hemoglobin\s*[:\-]?\s*(\d+(\.\d+)?)/i);
+          const sugarMatch = text.match(/Sugar\s*[:\-]?\s*(\d+)/i);
+          const cholMatch = text.match(/Cholesterol\s*[:\-]?\s*(\d+)/i);
+          const platMatch = text.match(/Platelet[s]?\s*[:\-]?\s*(\d+)/i);
+
+          if (hemoMatch) {
+            document.querySelector('[name="hemoglobin"]').value = hemoMatch[1];
+          }
+          if (sugarMatch) {
+            document.querySelector('[name="sugar"]').value = sugarMatch[1];
+          }
+          if (cholMatch) {
+            document.querySelector('[name="cholesterol"]').value = cholMatch[1];
+          }
+          if (platMatch) {
+            document.querySelector('[name="platelets"]').value = platMatch[1];
+          }
+
+          alert("✅ Scan completed! Please verify the auto-filled values.");
+        } catch (error) {
+          console.error("Scan error:", error);
+          alert(
+            "❌ Error scanning image. Please try again or enter values manually.",
+          );
+        } finally {
+          // Re-enable button
+          scanBtn.disabled = false;
+          scanBtn.textContent = "📸 Scan Image";
+        }
+      });
+    </script>
+    <!-- <a href="pages/ingredients.html">Go to Ingredient Page</a> -->
+  </body>
+</html>
