@@ -360,7 +360,7 @@ python script.py -v --format json data.json
 ## Project Demo
 
 ### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+https://drive.google.com/file/d/19nOUJk2r3zFJzABr80mbPOxLXenPegBv/view?usp=drivesdk
 
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
@@ -370,22 +370,24 @@ python script.py -v --format json data.json
 ---
 
 ## AI Tools Used (Optional - For Transparency Bonus)
+Gemini API (gemini-2.5-flash)
+Tesseract.js (OCR Engine)
 
-If you used AI tools during development, document them here for transparency:
-
-**Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
+**Tool Used:** claude.ai,chatgpt,API-ai,Google Gemini API (gemini-2.5-flash)
 
 **Purpose:** [What you used it for]
-- Example: "Generated boilerplate React components"
-- Example: "Debugging assistance for async functions"
-- Example: "Code review and optimization suggestions"
-
+- UI design and frontend development guidance
+- Debugging localStorage integration
+- OCR extraction from images
+- AI-based health risk analysis using Gemini API
 **Key Prompts Used:**
-- "Create a REST API endpoint for user authentication"
-- "Debug this async function that's causing race conditions"
-- "Optimize this database query for better performance"
+-"Extract text from uploaded image using OCR"
+-"Based on blood report and ingredients, is this product safe?"
+-"Give a short and direct answer with verdict and advice"
+-"Fix missing localStorage data issue"
+-"Make the UI modern and glassmorphism style"
 
-**Percentage of AI-generated code:** [Approximately X%]
+- **Percentage of AI-generated code:** [Approximately X%]
 
 **Human Contributions:**
 - Architecture design and planning
@@ -418,4 +420,5 @@ This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LI
 
 
 Made with ❤️ at TinkerHub
+
 
